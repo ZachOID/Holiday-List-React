@@ -38,21 +38,19 @@ class App extends Component {
   }
 
   render() {
-    let filteredData = this.cityList.filter((obj,i) => {
-      return obj.country.includes("India");
-     })
+    const orderedList = this.cityList
+      .slice(0, 6)
+      .filter((city) => city.country === "India")
+      .map((city, index) => <li key={`location${index + 1}`}>{city.name}</li>);
+
+    console.log(orderedList);
     return (
       <div id="main">
-        <ol>
-        {
-          filteredData.map((data, i) => {
-            console.log(data);
-            return <li key={`location${i}`}>{data.name}</li>;
-          })
-          }
-        </ol>
+        {/* Do not remove the main div */}
+        <ol type="a">{orderedList}</ol>
       </div>
-    )
+    );
   }
 }
+
 export default App;
