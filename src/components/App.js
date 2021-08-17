@@ -17,7 +17,7 @@ class App extends Component {
     { name: 'Museum Island', country: 'Germany' },
     { name: 'Munnar', country: 'India' },
     { name: 'Leh Ladakh', country: 'India' },
-    { name: 'Goa', country: 'India' },
+//     { name: 'Goa', country: 'India' },
     { name: 'Agra', country: 'India' },
     { name: 'Dalhousie', country: 'India' },
     { name: 'Coorg', country: 'India' },
@@ -38,13 +38,21 @@ class App extends Component {
   }
 
   render() {
+    let filteredData = this.cityList.filter((obj,i) => {
+      return obj.country.includes("India");
+     })
     return (
       <div id="main">
-        {/* Do not remove the main div */}
+        <ol>
+        {
+          filteredData.map((data, i) => {
+            console.log(data);
+            return <li key={`location${i}`}>{data.name}</li>;
+          })
+          }
+        </ol>
       </div>
     )
   }
 }
-
-
 export default App;
